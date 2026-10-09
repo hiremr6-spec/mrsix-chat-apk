@@ -3,16 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 void main() {
-  runApp(const MRSIXGeminiApp());
+  runApp(const MRSIXMister6App());
 }
 
-class MRSIXGeminiApp extends StatelessWidget {
-  const MRSIXGeminiApp({super.key});
+class MRSIXMister6App extends StatelessWidget {
+  const MRSIXMister6App({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'MR.SIX × Gemini',
+      title: 'MR.SIX × Mister 6',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: true,
@@ -35,7 +35,7 @@ class _ChatScreenState extends State<ChatScreen> {
   final List<Map<String, String>> _messages = [
     {
       'sender': 'assistant',
-      'text': 'MR.SIX is online. Gemini is connected and ready for chat.'
+      'text': 'MR.SIX × Mister 6 is online. Unrestricted access enabled. Mister 6 can check anything you need.'
     },
   ];
   bool _isLoading = false;
@@ -66,16 +66,16 @@ class _ChatScreenState extends State<ChatScreen> {
         uri,
         headers: {'Content-Type': 'application/json'},
         body: jsonEncode({'message': text}),
-      );
+      ).timeout(const Duration(seconds: 30));
 
       if (res.statusCode == 200) {
         final data = jsonDecode(res.body);
-        return data['reply'] ?? 'MR.SIX responded successfully.';
+        return data['reply'] ?? 'MR.SIX × Mister 6 responded successfully.';
       }
 
-      return 'Backend unavailable. MR.SIX fallback mode active.';
-    } catch (_) {
-      return 'Connection issue. MR.SIX is offline, but the interface is ready.';
+      return 'Backend unavailable. Mister 6 fallback mode active. Unrestricted access standing by.';
+    } catch (e) {
+      return 'Connection issue. Mister 6 is offline, but unrestricted access is configured and ready. Error: $e';
     }
   }
 
@@ -83,8 +83,10 @@ class _ChatScreenState extends State<ChatScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('MR.SIX × Gemini'),
+        title: const Text('MR.SIX × Mister 6'),
+        subtitle: const Text('Unrestricted Access Mode'),
         centerTitle: true,
+        elevation: 2,
       ),
       body: Column(
         children: [
@@ -130,7 +132,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   child: TextField(
                     controller: _controller,
                     decoration: InputDecoration(
-                      hintText: 'Ask MR.SIX anything',
+                      hintText: 'Ask Mister 6 to check anything',
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
                       ),

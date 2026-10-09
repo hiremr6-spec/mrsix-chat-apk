@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mrsix-config
+  namespace: mrsix
+data:
+  APP_NAME: "MR.SIX"
+  APP_TAGLINE: "MR.SIX powered by Mister 6"
+  MISTER_6_ACCESS_POLICY: "unrestricted"
+  MISTER_6_ALLOW_FILE_INSPECTION: "true"
+  MISTER_6_ALLOW_SYSTEM_CHECKS: "true"
+  MISTER_6_ALLOW_DATA_ACCESS: "true"
+  LOG_LEVEL: "INFO"
+  ENVIRONMENT: "production"
